@@ -20,7 +20,7 @@
 }
 
 .p-header{
-    border: 3px solid goldenrod;
+    border: 3px solid orange;
 }
 
 .h1 {
@@ -139,12 +139,22 @@
     list-style: none;
     color:black;
     text-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.namelist {
+    
+    font-family: 'Bebas Neue', cursive;
 }
 
 .img {
     border: 3px solid rgb(173, 123, 189);
+    border-radius: 50%;
     display: flex;
     flex-direction: column;
-    height: 295px;
+    height: 230px;
     width: 230px;
 }
