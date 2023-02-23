@@ -1,8 +1,102 @@
-@import 'core/variables';
-@import 'core/reset';
-@import 'components/code';
-@import 'components/links';
-@import 'layout/page';
-@import 'layout/header';
-@import 'layout/footer';
-@import 'pages/index';
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Zeyada', cursive; 
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.cocktails {
+    padding: 20px;
+    display: flex;
+    align-items:start;
+    height: 20vh;
+    width: 20vw;
+}
+
+.h1 {
+    
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size:x-large;
+}
+
+
+.form {
+    font-size: 30px;
+    
+}
+
+.div {
+
+    display: flex;
+    flex-direction: column;
+
+    &_input {
+        border: 2px solid gray;
+        padding: 20px;
+        height: 5vh;
+        width: 100%;
+        font-weight: bolder;
+        font-size: large;
+    }
+}
+
+.section0 {
+  
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    
+    
+}
+
+.div1 {
+   
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.section1 {
+   
+    background-color: rgba(213, 130, 238, 0.87);
+    width: 55vw;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+.section2 {
+    border: 3px solid pink;
+    background-color: lightpink;
+    width: 30vw;
+    font-size: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 15vh;
+}
