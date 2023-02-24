@@ -61,7 +61,6 @@ function handleClick(ev) {
   ev.currentTarget.parentElement.classList.toggle('selected');
 
   const selectedCocktail = listCocktailsData.find(drink => drink.idDrink === ev.currentTarget.id);
-  console.log(selectedCocktail);
 }
 
 function addEventCocktails() {
