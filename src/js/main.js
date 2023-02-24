@@ -16,6 +16,7 @@ fetch(url)
   .then((response) => response.json())
   .then((data) => {
     listMargaritaData = data.drinks;
+    listCocktailsData = data.drinks;
     renderListMargarita(listCocktails);
     addEventCocktails();
   });
@@ -59,7 +60,7 @@ function handleClick(ev) {
   console.log(ev.currentTarget.id);
   ev.currentTarget.parentElement.classList.toggle('selected');
 
-  const selectedCocktail = listCocktailsData.find(drink => drink.id === ev.currentTarget.id);
+  const selectedCocktail = listCocktailsData.find(drink => drink.idDrink === ev.currentTarget.id);
   console.log(selectedCocktail);
 }
 
