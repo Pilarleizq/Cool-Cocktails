@@ -40,7 +40,6 @@
     font-weight: bolder;
     border-left:3px solid rgb(173, 123, 189);
     
-    
 }
 
 .main {
@@ -73,7 +72,6 @@
     margin-top: 10px;
     
 }
-
 
 
 .form {
@@ -165,6 +163,7 @@
     text-shadow: 1px 2px 1px black;
     border: 2px solid  rgb(173, 123, 189);
     border-radius: 5%;
+    box-shadow: -10px 10px 4px black;
 
    
 }
@@ -172,8 +171,6 @@
 .article2 {
     border: 3px solid rgb(190, 81, 136);
     background-color: lightpink;
-    text-shadow: 1px 1px 2px white;
-    box-shadow: 2px 5px 10px black;
     width: 30vw;
     font-size: 20px;
     padding: 10px;
@@ -184,12 +181,20 @@
     padding: 3px 10px;
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
-   
+    box-shadow: 1px 1px 10px hsl(327, 69%, 60%),
+    2px 2px 0px hsl(327,69%,79%),
+    3px 3px 0px hsl(327,69%,75%),
+    4px 4px 0px hsl(327,69%,90%),
+    5px 5px 0px hsl(327,69%,90%);
+    text-shadow: 1px 1px 10px hsl(327, 20%, 60%),
+    2px 2px 0px hsl(327,69%,66%),
+    3px 3px 0px hsl(327,69%,70%),
+    4px 4px 0px hsl(327,69%,60%);
 }
 
 .li {
    
-    padding: 10px;
+    padding: 30px;
     list-style: none;
     color:black;
     text-shadow: none;
@@ -206,7 +211,9 @@
 }
 
 .img {
-    border: 3px solid rgb(173, 123, 189);
+    // border: 3px solid rgb(173, 123, 189);
+    border: 3px solid black;
+    box-shadow: -5px 6px 2px black;
     border-radius: 50%;
     display: flex;
     flex-direction: column;

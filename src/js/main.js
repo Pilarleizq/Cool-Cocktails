@@ -6,7 +6,7 @@ const resetButton = document.querySelector('.js-buttonReset');
 const listCocktails = document.querySelector('.js-ulAll');
 const listFavs = document.querySelector('.js-ulFavs');
 const url ='https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
-const liElementsList = document.querySelectorAll('.js-li-cocktails');
+
 
 let listMargaritaData = [];
 let listCocktailsData = [];
@@ -21,9 +21,9 @@ fetch(url)
 
 function renderListMargarita(drinks) {
   for (const cocktail of listMargaritaData) {
-    drinks.innerHTML += ` <li class="li js-li-cocktails">
+    drinks.innerHTML += ` <li class="li">
         <p class="namelist"> ${cocktail.strDrink} </p>
-        <img class="img" src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
+        <img class="img js-li-cocktails" src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
         </li>
         `;
   }
@@ -31,12 +31,13 @@ function renderListMargarita(drinks) {
 
 function renderListCocktails(drinks) {
   for (const cocktail of listCocktailsData) {
-    drinks.innerHTML += ` <li class="li js-li-cocktails">
+    drinks.innerHTML += ` <li class="li">
           <p class="namelist"> ${cocktail.strDrink} </p>
-          <img class="img" src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
+          <img class="img js-li-cocktails" src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
           </li>
           `;
   }
+  addEventCocktails();
 }
 
 
@@ -54,10 +55,11 @@ function handleClickButton() {
 
 
 function handleClick(ev) {
-    console.log('holi');
+  console.log('holi');
 }
 
 function addEventCocktails() {
+  const liElementsList = document.querySelectorAll('.js-li-cocktails');
   for (const li of liElementsList) {
     li.addEventListener('click', handleClick);
   }
