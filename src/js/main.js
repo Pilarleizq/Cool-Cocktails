@@ -10,6 +10,7 @@ const url ='https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
 
 let listMargaritaData = [];
 let listCocktailsData = [];
+let listFavsData = [];
 
 fetch(url)
   .then((response) => response.json())
@@ -23,7 +24,7 @@ function renderListMargarita(drinks) {
   for (const cocktail of listMargaritaData) {
     drinks.innerHTML += ` <li class="li">
         <p class="namelist"> ${cocktail.strDrink} </p>
-        <img class="img js-li-cocktails" src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
+        <img class="img js-li-cocktails" id=${cocktail.idDrink} src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
         </li>
         `;
   }
@@ -31,9 +32,9 @@ function renderListMargarita(drinks) {
 
 function renderListCocktails(drinks) {
   for (const cocktail of listCocktailsData) {
-    drinks.innerHTML += ` <li class="li">
+    drinks.innerHTML += ` <li class="li" >
           <p class="namelist"> ${cocktail.strDrink} </p>
-          <img class="img js-li-cocktails" src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
+          <img class="img js-li-cocktails" id=${cocktail.idDrink} src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
           </li>
           `;
   }
@@ -55,7 +56,11 @@ function handleClickButton() {
 
 
 function handleClick(ev) {
-  console.log('holi');
+  console.log(ev.currentTarget.id);
+  ev.currentTarget.parentElement.classList.toggle('selected');
+
+  const selectedCocktail = listCocktailsData.find(drink => drink.id === ev.currentTarget.id);
+  console.log(selectedCocktail);
 }
 
 function addEventCocktails() {
@@ -64,5 +69,13 @@ function addEventCocktails() {
     li.addEventListener('click', handleClick);
   }
 }
+
+//Favoritos
+
+// fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputSearch.value}`)
+//   .then((response) => response.json())
+//   .then((data) => {
+//     listFavsData = data.drinks;
+//   });
 
 searchButton.addEventListener('click', handleClickButton);
