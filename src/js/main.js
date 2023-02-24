@@ -42,6 +42,16 @@ function renderListCocktails(drinks) {
   addEventCocktails();
 }
 
+function renderListFavs(listCocktailsData) {
+  listFavs.innerHTML = '';
+  for (const cocktail of listCocktailsData) {
+    listFavs.innerHTML += ` <li class="li" >
+          <p class="namelist"> ${cocktail.strDrink} </p>
+          <img class="img js-li-cocktails" id=${cocktail.idDrink} src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
+          </li>
+          `;
+  }
+}
 
 function handleClickButton() {
   fetch(
@@ -61,7 +71,10 @@ function handleClick(ev) {
   ev.currentTarget.parentElement.classList.toggle('selected');
 
   const selectedCocktail = listCocktailsData.find(drink => drink.idDrink === ev.currentTarget.id);
+  listFavsData.push(selectedCocktail);
+  renderListFavs(listFavsData);
 }
+
 
 function addEventCocktails() {
   const liElementsList = document.querySelectorAll('.js-li-cocktails');

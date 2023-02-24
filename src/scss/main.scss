@@ -177,10 +177,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 400%;
+    flex-direction: column;
     padding: 3px 10px;
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
     box-shadow: 1px 1px 10px hsl(327, 69%, 60%),
     2px 2px 0px hsl(327,69%,79%),
     3px 3px 0px hsl(327,69%,75%),
@@ -190,6 +188,18 @@
     2px 2px 0px hsl(327,69%,66%),
     3px 3px 0px hsl(327,69%,70%),
     4px 4px 0px hsl(327,69%,60%);
+}
+
+.mis-favs {
+    border-bottom: 2px solid black;
+}
+
+.ul-favs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 60px;
 }
 
 .li {
