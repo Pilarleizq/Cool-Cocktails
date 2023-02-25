@@ -2,38 +2,31 @@
 
 const inputSearch = document.querySelector('.js-inputSearch');
 const searchButton = document.querySelector('.js-buttonSearch');
-const resetButton = document.querySelector('.js-buttonReset');
+// const resetButton = document.querySelector('.js-buttonReset');
 const listCocktails = document.querySelector('.js-ulAll');
 const listFavs = document.querySelector('.js-ulFavs');
-const url ='https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
 
-
-let listMargaritaData = [];
 let listCocktailsData = [];
 let listFavsData = [];
 
-fetch(url)
-  .then((response) => response.json())
-  .then((data) => {
-    listMargaritaData = data.drinks;
-    listCocktailsData = data.drinks;
-    renderListMargarita(listCocktails);
-    addEventCocktails();
-  });
+fetchCocktails('margarita');
 
-function renderListMargarita(drinks) {
-  for (const cocktail of listMargaritaData) {
-    drinks.innerHTML += ` <li class="li">
-        <p class="namelist"> ${cocktail.strDrink} </p>
-        <img class="img js-li-cocktails" id=${cocktail.idDrink} src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
-        </li>
-        `;
-  }
+function fetchCocktails(searchValue){
+  fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchValue}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      listCocktails.innerHTML = '';
+      listCocktailsData = data.drinks;
+      renderListCocktails(listCocktails);
+    });
 }
 
 function renderListCocktails(drinks) {
+  listCocktails.innerHTML = '';
   for (const cocktail of listCocktailsData) {
-    drinks.innerHTML += ` <li class="li" >
+    drinks.innerHTML += `<li class="li" >
           <p class="namelist"> ${cocktail.strDrink} </p>
           <img class="img js-li-cocktails" id=${cocktail.idDrink} src=${cocktail.strDrinkThumb} alt="Foto del cocktail"/>
           </li>
@@ -54,27 +47,25 @@ function renderListFavs(listCocktailsData) {
 }
 
 function handleClickButton() {
-  fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputSearch.value}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      listCocktails.innerHTML = '';
-      listCocktailsData = data.drinks;
-      renderListCocktails(listCocktails);
-    });
+  fetchCocktails(inputSearch.value);
 }
-
 
 function handleClick(ev) {
-  console.log(ev.currentTarget.id);
   ev.currentTarget.parentElement.classList.toggle('selected');
 
-  const selectedCocktail = listCocktailsData.find(drink => drink.idDrink === ev.currentTarget.id);
-  listFavsData.push(selectedCocktail);
+  const idSelected = ev.currentTarget.id;
+  const selectedCocktail = listCocktailsData.find(drink => drink.idDrink === idSelected);
+  const indexCocktails = listFavsData.findIndex(drink => drink.idDrink === idSelected);
+
+  if (indexCocktails === -1){ //Significa que no está en la lista de favs, (0,1,2,3... es la posición que ocupa)
+    listFavsData.push(selectedCocktail);
+    // Lo pinto (abajo para no repetirlo)
+  } else { //si está en el listado, lo elimino. Splice: elimina un elemento a partir de una posición
+    listFavsData.splice(indexCocktails,1);
+    // Lo pinto (abajo)
+  }
   renderListFavs(listFavsData);
 }
-
 
 function addEventCocktails() {
   const liElementsList = document.querySelectorAll('.js-li-cocktails');
@@ -83,12 +74,10 @@ function addEventCocktails() {
   }
 }
 
-//Favoritos
-
-// fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputSearch.value}`)
-//   .then((response) => response.json())
-//   .then((data) => {
-//     listFavsData = data.drinks;
-//   });
+function handleInput(ev){
+  ev.preventDefault();
+  fetchCocktails(inputSearch.value);
+}
 
 searchButton.addEventListener('click', handleClickButton);
+inputSearch.addEventListener('input', handleInput);
