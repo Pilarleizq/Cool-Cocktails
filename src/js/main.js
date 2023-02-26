@@ -11,15 +11,32 @@ let listFavsData = [];
 
 fetchCocktails('margarita');
 
+const cocktailsStored = JSON.parse(localStorage.getItem('cocktails'));
+if(cocktailsStored) {
+  listCocktailsData = cocktailsStored;
+  renderListCocktails(listCocktails);
+} else {
+  fetchCocktails();
+}
+
+const favsStored = JSON.parse(localStorage.getItem('favs'));
+if(favsStored){
+  listFavsData = favsStored;
+  renderListFavs(favsStored);
+} else {
+  fetchCocktails();
+}
+
+
 function fetchCocktails(searchValue){
   fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchValue}`
-  )
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchValue}`)
     .then((response) => response.json())
     .then((data) => {
       listCocktails.innerHTML = '';
       listCocktailsData = data.drinks;
       renderListCocktails(listCocktails);
+      localStorage.setItem('cocktails',JSON.stringify(listCocktailsData));
     });
 }
 
@@ -44,6 +61,7 @@ function renderListFavs(listCocktailsData) {
           </li>
           `;
   }
+  localStorage.setItem('favs',JSON.stringify(listFavsData));
 }
 
 function handleClickButton() {
@@ -81,3 +99,5 @@ function handleInput(ev){
 
 searchButton.addEventListener('click', handleClickButton);
 inputSearch.addEventListener('input', handleInput);
+
+//prevenDefault se suele utilizar con button y etiquetas tipo submit, ya que recargan la página
