@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cool cocktails 🍹</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="icon" href="" /> 
+  </head>
+
+  <body class="body">
+    <header class="header">
+
+    <img class="cocktails" src="./assets/images/cocktail.png" alt="Cocktails dibujo">
+
+    <p class="p-header">
+    <h1 class="h1">¡Bienvenidos a Cool Cocktails!</h1>
+    </p>
+
+    </header>
+    
+    <main class="main">
+
+        <form class="form">
+
+            <div class="title-input">
+            
+            <label class="label" for="text">Busca tu Cool Cocktail aquí</label>
+            <img class="arrow" src="./assets/images/flecha-curva.png" alt="flecha curva">
+
+             </div>
+
+            <div class="div">
+            
+                <input
+                class="div_input js-inputSearch"
+                id="text"
+                type="text"
+                name="text"
+                placeholder="Ejemplo: Margarita"
+                />
+                <section class="section0">
+                <input class="section0_button js-buttonSearch" type="button" value="Buscar">
+                <input class="section0_buttonReset js-buttonReset" type="button" value="Reset">
+                </section>
+            </div>
+
+        </form>
+
+    <section class="section1">
+
+        <article class="article1">
+            <h2 class="h2-all">Todos los cool cocktails</h2>
+            <ul class="ul-all js-ulAll"></ul>
+        </article>
+
+        <article class="article2">
+            <h2 class="mis-favs">Mis súper cocktails</h2>
+            <ul class="ul-favs js-ulFavs"></ul>
+            <img class="trash js-trash" src="./assets/images/mano.png">
+            <input class="borrarFavs js-removeFavs" type="button" value="Borra tus favs">
+           
+        </article>
+
+    </div>
+
+    </main>
+    
+    <script src="./assets/js/main.js"></script>
+  </body>
+
+</html>
