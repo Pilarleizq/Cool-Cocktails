@@ -79,9 +79,7 @@ function removeFavs (ev){
   const idRemove = ev.currentTarget.id;
   console.log(idRemove);
   const eachCocktail = listFavsData.findIndex(cocktail => cocktail.idDrink === idRemove);
-
   listFavsData.splice(eachCocktail,1);
-  
   renderListCocktails(listCocktailsData);
   renderListFavs(listFavsData);
 
@@ -124,6 +122,13 @@ function addEventToX(){
   }
 }
 
+function addEventToTrash(){
+  const inputTrash = document.querySelectorAll('.js-removeFavs');
+  for (const x of inputTrash){
+    x.addEventListener('click', removeFavs);
+  }
+}
+
 function handleInput(ev){
   ev.preventDefault();
   fetchCocktails(inputSearch.value);
@@ -137,7 +142,7 @@ function handleInput(ev){
 
 searchButton.addEventListener('click', handleClickButton);
 inputSearch.addEventListener('input', handleInput);
-// inputTrash.addEventListener('click', handleTrash);
+inputTrash.addEventListener('click', addEventToTrash);
 
 //prevenDefault se suele utilizar con button y etiquetas tipo submit, ya que recargan la página
 // No funciona el inputTrash :( )
